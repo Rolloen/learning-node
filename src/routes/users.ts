@@ -1,9 +1,10 @@
 import express, { Request, Response, NextFunction, } from 'express';
+import { RegisterUserHandler } from '../handlers/users/users.handlers';
 var usersRouter = express.Router();
 
 /* GET users listing. */
-usersRouter.get('/', function(req : Request, res : Response, next : NextFunction) {
-  res.send('respond with a resource');
+usersRouter.post('/register', function(req : Request, res : Response, next : NextFunction) {
+  RegisterUserHandler(req,res,next);
 });
 
 export default usersRouter;

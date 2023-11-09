@@ -6,7 +6,8 @@
   "scripts": {
     "build": "npx tsc",
     "start": "node dist/bin/www.js",
-    "dev": "concurrently \"npx tsc --watch\" \"DEBUG=myApp nodemon -q dist/bin/www.js\""
+    "dev": "concurrently \"npx tsc --watch\" \"DEBUG=myApp nodemon -q  --inspect dist/bin/www.js\"",
+    "debug": "nodemon --inspect dist/bin/www.js"
   },
   "dependencies": {
     "@types/cookie-parser": "^1.4.6",
