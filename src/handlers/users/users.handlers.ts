@@ -10,3 +10,14 @@ export const RegisterUserHandler = (req: Request, res: Response, next: NextFunct
     //TODO: save it in the DB
     res.status(200).send(true);
 }
+
+export const LoginUserHandler = (req: Request, res: Response, next: NextFunction) : void => {
+    const body: UserRegistrationModel = req.body;
+    let newUser: UserModel = {
+        email: body.email,
+        username: 'body.username'
+    };
+    //TODO: check user infos
+    res.status(200).send(newUser);
+}
+

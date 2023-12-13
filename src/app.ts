@@ -1,13 +1,13 @@
-import express, { Express, Request, Response, NextFunction } from 'express';
-import createError from 'http-errors';
-import cors from 'cors';
-// import path from 'path';
 import cookieParser from 'cookie-parser';
-// var logger = require('morgan');
-
+import cors from 'cors';
+import express, { Express, NextFunction, Request, Response } from 'express';
+import createError from 'http-errors';
+import "reflect-metadata";
 // var indexRouter = require('./routes/index');
+import { initDB } from './db/db';
+import { AppDataSource } from './db/dataSource';
 import homeRouter from './routes/index';
-import usersRouter from './routes/users'
+import usersRouter from './routes/users';
 // var usersRouter = require('./routes/users');
 
 var app: Express = express();
@@ -17,7 +17,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors());
-// app.use(express.static(path.join(__dirname, 'public')));
+
+//INIT DB
+var db = initDB();
+db.connect(); 
+
+AppDataSource.initialize();
+
+console.log('tesstr')
 
 app.use('/', homeRouter);
 app.use('/users', usersRouter);
